@@ -1,0 +1,6 @@
+g++ -o out_file_name filename.cpp
+./name_change
+
+/* c commands*/
+gcc file_name.c
+./a.exe
