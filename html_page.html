@@ -1,0 +1,48 @@
+<!-- create html page -  with 
+	1 textfield and multiple buttons 
+	
+button captions are - 1)Add at End 
+		 2) Add at Start
+		3) delete from end 
+		4) delete from start
+		5) display odd numbers 
+		6) display even numbers
+hint -  use Array predined methods -->
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <input type="number" id="numberinput" placeholder="Enter The Number">
+    <div id="output"></div>
+
+    <button onclick="addAtEnd()">AddAtEnd</button>
+    <script>
+        let arr =[];
+
+        function addAtEnd()
+        {
+            let val =document.getElementById("numberinput").value;
+            if (val !=="")
+        {
+              arr.push(Number(val));
+              display(); 
+        }
+           
+        }
+
+        function display()
+        {
+            document.getElementById("output").innerHTML = "Output is " +(arr.length ? arr.join(" ,"):"Empty");
+        }
+
+
+    </script>
+ </body>
+ </html>
+
