@@ -1,0 +1,132 @@
+<!-- /* 6) Accept Employee data 
+FirstName  | LastName | email | Date of Birth 
+
+from user 
+	a) perform validation -  data is entered or not 
+                    if not entered then display error msg 
+	b) if data is correct then display data on same page
+                     in table format */ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Data Entry</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input {
+      margin: 5px;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 250px;
+    }
+    button {
+      margin: 10px 5px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      background: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #error {
+      color: red;
+      margin: 10px 0;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+      width: 80%;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h2>Employee Data Form</h2>
+  <form id="empForm" onsubmit="return validateForm()">
+    <input type="text" id="firstName" placeholder="First Name"><br>
+    <input type="text" id="lastName" placeholder="Last Name"><br>
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="date" id="dob" placeholder="Date of Birth"><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="error"></div>
+
+  <table id="empTable" style="display:none;">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Date of Birth</th>
+      </tr>
+    </thead>
+    <tbody id="empData"></tbody>
+  </table>
+
+  <script>
+    function validateForm() {
+      let fname = document.getElementById("firstName").value.trim();
+      let lname = document.getElementById("lastName").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let dob = document.getElementById("dob").value.trim();
+      let errorDiv = document.getElementById("error");
+
+   
+      errorDiv.innerHTML = "";
+
+      if(fname === "" || lname === "" || email === "" || dob === "") {
+        errorDiv.innerHTML = " All fields are required!";
+        return false;
+      }
+
+      
+      let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailPattern.test(email)) {
+        errorDiv.innerHTML = "Please enter a valid email address!";
+        return false;
+      }
+
+      let today = new Date();
+      let enteredDate = new Date(dob);
+      if(enteredDate > today) {
+        errorDiv.innerHTML = " Date of Birth cannot be in the future!";
+        return false;
+      }
+
+      
+      let table = document.getElementById("empTable");
+      let tbody = document.getElementById("empData");
+      table.style.display = "table";
+
+      let newRow = `<tr>
+                      <td>${fname}</td>
+                      <td>${lname}</td>
+                      <td>${email}</td>
+                      <td>${dob}</td>
+                    </tr>`;
+      tbody.innerHTML += newRow;
+
+    
+      document.getElementById("empForm").reset();
+
+      return false; 
+    }
+  </script>
+</body>
+</html>

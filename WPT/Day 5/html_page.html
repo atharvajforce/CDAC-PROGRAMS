@@ -1,4 +1,5 @@
-<!-- create html page -  with 
+
+<!-- <!-- <!-- create html page -  with 
 	1 textfield and multiple buttons 
 	
 button captions are - 1)Add at End 
@@ -9,40 +10,97 @@ button captions are - 1)Add at End
 		6) display even numbers
 hint -  use Array predined methods -->
 
-
+ 
  <!DOCTYPE html>
- <html lang="en">
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
- </head>
- <body>
-    <input type="number" id="numberinput" placeholder="Enter The Number">
-    <div id="output"></div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Operations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+      border-radius: 6px;
+    }
+    #output {
+      margin-top: 15px; 
+      padding: 10px;
+      border: 1px solid #2c2c2c;
+     min-height: 30px;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <h2> Array Operations <bold></h2>
+  <input type="number" id="numInput" placeholder="Enter number">
+  <br>
+  <button onclick="addAtEnd()">Add at End</button>
+  <button onclick="addAtStart()">Add at Start</button>
+  <button onclick="deleteFromEnd()">Delete from End</button>
+  <button onclick="deleteFromStart()">Delete from Start</button>
+  <button onclick="displayOdd()">Display Odd Numbers</button>
+  <button onclick="displayEven()">Display Even Numbers</button>
 
-    <button onclick="addAtEnd()">AddAtEnd</button>
-    <script>
-        let arr =[];
+  <div id="output"> Array : [ ]</div>
 
-        function addAtEnd()
-        {
-            let val =document.getElementById("numberinput").value;
-            if (val !=="")
-        {
-              arr.push(Number(val));
-              display(); 
-        }
-           
-        }
+  <script>
+    let arr = [];
 
-        function display()
-        {
-            document.getElementById("output").innerHTML = "Output is " +(arr.length ? arr.join(" ,"):"Empty");
-        }
+    function updateOutput(msg = "") {
+      document.getElementById("output").innerHTML = 
+        (msg ? msg + "<br>" : "") + "Array: [" + arr.join(", ") + "]";
+    }
 
+    function addAtEnd() {
+      let val = document.getElementById("numInput").value;
+      if(val !== "") {
+        arr.push(Number(val));
+        updateOutput("Added " + val + " at end");
+      }
+    }
 
-    </script>
- </body>
- </html>
+    function addAtStart() {
+      let val = document.getElementById("numInput").value;
+      if(val !== "") {
+        arr.unshift(Number(val));
+        updateOutput("Added " + val + " at start");
+      }
+    }
+
+    function deleteFromEnd() {
+      if(arr.length > 0) {
+        let removed = arr.pop();
+        updateOutput("Deleted " + removed + " from end");
+      } else {
+        updateOutput("Array is empty!");
+      }
+    }
+
+    function deleteFromStart() {
+      if(arr.length > 0) {
+        let removed = arr.shift();
+        updateOutput("Deleted " + removed + " from start");
+      } else {
+        updateOutput("Array is empty!");
+      }
+    }
+
+    function displayOdd() {
+      let odd = arr.filter(num => num % 2 !== 0);
+      updateOutput("Odd Numbers: [" + odd.join(", ") + "]");
+    }
+
+    function displayEven() {
+      let even = arr.filter(num => num % 2 === 0);
+      updateOutput("Even Numbers: [" + even.join(", ") + "]");
+    }
+  </script>
+</body>
+</html>
 
