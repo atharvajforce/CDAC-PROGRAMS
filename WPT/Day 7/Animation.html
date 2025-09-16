@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+</head>
+<body>
+    <h1 style="color: crimson; text-align: center;"> <i>ANIMATION STYLE </i></h1>
+    
+     <div style="background-color: chocolate; width: 30px; height: 30px; border-radius:20%; position: absolute; right: 0;" id="G1">   
+         </div>
+        
+         <div style="background-color: teal; width: 30px; height: 30px; border-radius: 20%; position: absolute; left: 0;" id="R1">
+
+        </div>
+        <script>
+      let num = 0;
+      let count=0;
+      let a12=setInterval(fun,1000)
+       function fun()
+       {
+            num=num+10;
+           
+          document.getElementById("R1").style.marginTop=num+"px";
+          document.getElementById("R1").style.marginLeft=num+"px";
+          document.getElementById("G1").style.marginTop=num+"px";
+          document.getElementById("G1").style.marginRight=num+"px";
+
+         
+       }
+
+       setTimeout(()=>{clearInterval(a12)},6000)
+      
+
+
+        </script>
+        </body>
+</html>
