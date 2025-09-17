@@ -1,0 +1,46 @@
+<!-- 2. Using Jquery accept a number from the user in a textfield 
+-on change show the factorial of that number in a <p> tag -->
+   
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Day 8</title>
+  </head>
+  <body>
+    <h1 style="text-align: center; background-color: aliceblue;"><i><b>FACTORIAL</b></i></h1>
+    <label >Enter number:</label> <br>
+    <input style="font-family: 'Times New Roman', Times, serif;background-color: antiquewhite; " id="a1" placeholder=""> <br><br>
+    <button style="background-color: aliceblue; border-radius: 20px;" id="Calculate">Calculate</button>
+    <!-- <p style="background-color: rgb(138, 230, 230);" id="f"> Factorial is <p id="f1"> </p> </p> -->
+     <p  style="background-color: azure;" id="f1">The factorial is :- <p style="background-color: blanchedalmond;" id="f" ></p></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script>
+        $(document).ready(function(){
+           
+            $("#Calculate").click(function()
+        
+             {
+                let number=$("#a1").val();
+                console.log(number);
+                
+                let num=Number(number);
+                let a=1;
+                for(let i=1;i<=num;i++)
+                {
+                    a=a*i; 
+                }
+
+                console.log(a);
+
+                $("#f").html(a);
+                
+
+             } )
+
+        })
+
+    </script>
+  </body>
+  </html>  
