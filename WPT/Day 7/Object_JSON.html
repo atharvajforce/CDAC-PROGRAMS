@@ -1,0 +1,98 @@
+<!-- Acccept data from user using input fields 
+      firstName LastName age 
+	  
+	  store data in Object format in function 
+	  and convert into JSON format 
+	  
+	  and display data in table format from JSON format data  -->
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object</title>
+</head>
+<body>
+ <h1 style="text-align: center; text-decoration-color: azure ; background-color: darkgoldenrod; border-radius: 30px;">JASON OBJECT</h1>
+ 
+ <label style="text-align: left;">Enter First Name :</label>
+ <input id="a1" placeholder=""> <br> <br>
+ <label style="text-align: left;">Enter Last Name :</label>
+ <input id="a2" placeholder= "" > <br>  <br>
+ <label style="text-align: left;">Enter Age :</label>
+ <input id="a3" placeholder=""><br> <br>
+ <button onclick="Call()" style="background-color: aqua;">Submit</button> <br> <br>
+ <label id="1"></label> <br>
+ <label id="2"></label>  <br>
+ <label id="3"></label>  <br>
+ <label id="userTable"></label> <br> <br>
+ <button onclick="" style="background-color: aqua;">NO USE</button> <br> <br>
+
+ <script>
+    let data2=[];
+    function Call()
+    {
+     let a=document.getElementById("a1").value;
+     console.log(a);
+     document.getElementById("1").innerText="First Name :"+a;
+     let b=document.getElementById("a2").value;
+     console.log(b);
+     document.getElementById("2").innerText="Last Name :"+b;
+     let c=document.getElementById("a3").value;
+     console.log(c);
+     document.getElementById("3").innerText=" Age :"+c;
+
+     let data = {
+        "fName":a,
+        "lName":b,
+        "age":c
+     }
+   
+     console.log(data);
+     
+     let jd = JSON.stringify(data);
+
+    data2.push(data)
+
+     // console.log(jd["fName"]);
+     
+    //const myJson =document.getElementById("a1")
+    
+     let tableHTML = `
+        <table border="1" cellpadding="5" cellspacing="0">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+    `;
+
+        for(let i=0;i<data2.length;i++)
+        {
+        tableHTML+= `
+            <tr>
+                <td>${data2[i].fName}</td>
+                <td>${data2[i].lName}</td>
+                <td>${data2[i].age}</td>
+            </tr>
+        `;
+        }  
+        tableHTML += `</table>`;
+        document.getElementById("userTable").innerHTML =tableHTML; 
+
+    }
+
+    //  function Delete()
+
+    //  {
+    //      data2.pop(data)
+    //  }
+
+
+
+ </script>
+
+</body>
+</html>

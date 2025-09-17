@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 7</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;background-color: aliceblue; font-family: 'Times New Roman', Times, serif;"><i><b>CONCATINATE</b></i></h1>
+    <input type="text" placeholder="Enter the User First Name" id="fName"/><br/><br/>
+    <input type="text" placeholder="Enter the User Last Name" id="lName"/><br/><br/>
+    <input type="text" placeholder="Enter the User Age" id="Age"/><br/><br/>
+    <button onclick="s1()">Submit</button>
+
+    <label id="password"></label>
+
+<script>
+
+function s1(){
+
+        let pass="";
+        let count=0;
+        let a=document.getElementById("fName").value;
+        let b=document.getElementById("lName").value;
+        let c=document.getElementById("Age").value;
+        
+        for(let i=0;i<2;i++)
+        {   
+           pass+= a[i];
+           
+        }   
+
+        for(let i=b.length-1;i>0;i--)
+        {   count++;
+            if(count<=2)
+            {   pass+= b[i];
+            }
+           
+        }  
+        pass +=c; 
+        console.log(pass);
+ 
+      document.getElementById("password").innerText=pass; 
+    } 
+
+
+    </script>
+
+</body>
+</html>
