@@ -1,0 +1,9 @@
+Write a React Component to accept user details
+name email 
+dropdown
+Graduate, PG , UnderGrad
+
+If the user selects Graduate show GraduateComponent degree, year, final year score, university
+If the user selects PG show PGComponent year, Thesis subject
+If the user selects UnderGrad show UnderGradComponent SSC , HSC
+( USE conditional Renderring )
