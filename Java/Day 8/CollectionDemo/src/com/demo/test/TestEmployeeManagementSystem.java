@@ -55,7 +55,6 @@ public class TestEmployeeManagementSystem {
 			}
 			case 5->{
 			System.out.println("Enter id for Search");
-			Scanner sc1 = new Scanner(System.in);
 			int eid = sc.nextInt();
 			System.out.println("Enter Salary");
 			double sal =sc.nextDouble();
@@ -94,16 +93,14 @@ public class TestEmployeeManagementSystem {
 				{
 					System.out.println("Not Found");
 				}
-	
-			}
+				}
 			case 8->{
 				System.out.println("Enter salary");
 				double sal=sc.nextDouble();
 				List<Employee> elist= eservice.searchBySal(sal);
 				if(elist!=null) {
 					elist.forEach(System.out::println);
-					
-				}
+				 }
 				else {
 					System.out.println("Not found");
 				}

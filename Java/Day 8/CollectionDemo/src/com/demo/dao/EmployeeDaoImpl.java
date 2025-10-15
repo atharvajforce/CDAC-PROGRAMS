@@ -85,10 +85,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return false;
 	}
 	@Override
-public boolean removeBySalary(double sal) {
-		
+	public boolean removeBySalary(double sal) {
 		return elist.removeIf(emp->emp.getSal()>sal);
-		
 	}
 	@Override
 	public List<Employee> findBySal(double sal) {
@@ -110,27 +108,39 @@ public boolean removeBySalary(double sal) {
 					}
 		return null;
 	}
+//	@Override
+//	public List<Employee> sortBySal() {
+//		List<Employee> lst=new ArrayList<>();
+//		for(Employee e:elist) {
+//			lst.add(e);
+//		}
+//		lst.sort(null);
+//		return lst;
+//	}
 	@Override
 	public List<Employee> sortBySal() {
-		List<Employee> lst=new ArrayList<>();
-		for(Employee e:elist) {
-			lst.add(e);
-		}
-		lst.sort(null);
-		return lst;
+	    // Better way to copy the list
+	    List<Employee> lst = new ArrayList<>(elist); 
+	    
+	    // Explicitly define the Comparator for salary
+	    Comparator<Employee> salComparator = (e1, e2) -> {
+	        return Double.compare(e1.getSal(), e2.getSal());
+	    };
+	    
+	    lst.sort(salComparator);
+	    return lst;
 	}
 	@Override
 	public List<Employee> sortByName() {
-		List<Employee> lst=new ArrayList<>();
-		for(Employee e:elist) {
-			lst.add(e);
-		}
-		//lst.sort(new MyNameComparator());
-		Comparator<Employee> c=(o1,o2)->{
-			System.out.println("In functional comparator");
-			return o1.getEname().compareTo(o2.getEname());
+		// TODO Auto-generated method stub
+		
+		List <Employee> lst1 =new ArrayList<>(elist);
+		Comparator<Employee> nameComparator=(e1,e2)->
+		{
+		 return e1.getEname().compareTo(e2.getEname());	
 		};
-		lst.sort(c);
-		return lst;
+		
+		lst1.sort(nameComparator);
+		return lst1;
 	}
 }

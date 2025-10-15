@@ -24,7 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		System.out.println("Enter id");
 		int empid=sc.nextInt();
 		sc.nextLine();
-		System.out.println("Enter name");
+		System.out.println("Enter+ name");
 		String nm=sc.nextLine();
 		System.out.println("Enter salary");
 		double sal=sc.nextDouble();
@@ -62,7 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public boolean updatebyID(int eid, double sal) {             //implement in {dao implementation}
-	return edao.modifyById(eid,sal);
+		return edao.modifyById(eid,sal);
 	}
 
 
@@ -81,15 +81,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<Employee> sortBySal() {
-		// TODO Auto-generated method stub
-		return null;
+		return edao.sortBySal();
 	}
 
 
 	@Override
 	public List<Employee> sortByName() {
 		// TODO Auto-generated method stub
-		return null;
+		return edao.sortByName();
 	}
 
 }
